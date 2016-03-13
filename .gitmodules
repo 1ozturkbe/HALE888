@@ -1,0 +1,7 @@
+[submodule "pyxfoil"]
+	path = pyxfoil
+	url = https://github.com/hoburg/pyxfoil.git
+[submodule "gpkit-models"]
+	path = gpkit-models
+	url = https://github.com/hoburg/gpkit-models.git
+	branch = 1682master
