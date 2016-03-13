@@ -5,3 +5,6 @@
 	path = gpkit-models
 	url = https://github.com/hoburg/gpkit-models.git
 	branch = 1682master
+[submodule "pyavl"]
+	path = pyavl
+	url = https://github.com/pankajp/pyavl.git
