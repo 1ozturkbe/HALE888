@@ -8,3 +8,6 @@
 [submodule "pyavl"]
 	path = pyavl
 	url = https://github.com/pankajp/pyavl.git
+[submodule "ets"]
+	path = ets
+	url = https://github.com/enthought/ets.git
