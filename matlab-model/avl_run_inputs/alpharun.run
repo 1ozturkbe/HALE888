@@ -1,0 +1,105 @@
+LOAD ../geometries/bwbdrag100.avl
+PLOP
+g
+
+OPER
+M 
+MN 0.1314
+ 
+a a -3.0000
+x
+st
+../runs/alpharun-3.st
+o
+a a -2.0000
+x
+st
+../runs/alpharun-2.st
+o
+a a -1.0000
+x
+st
+../runs/alpharun-1.st
+o
+a a 0.0000
+x
+st
+../runs/alpharun0.st
+o
+a a 1.0000
+x
+st
+../runs/alpharun1.st
+o
+a a 2.0000
+x
+st
+../runs/alpharun2.st
+o
+a a 3.0000
+x
+st
+../runs/alpharun3.st
+o
+a a 4.0000
+x
+st
+../runs/alpharun4.st
+o
+a a 5.0000
+x
+st
+../runs/alpharun5.st
+o
+a a 6.0000
+x
+st
+../runs/alpharun6.st
+o
+a a 7.0000
+x
+st
+../runs/alpharun7.st
+o
+a a 8.0000
+x
+st
+../runs/alpharun8.st
+o
+a a 9.0000
+x
+st
+../runs/alpharun9.st
+o
+a a 10.0000
+x
+st
+../runs/alpharun10.st
+o
+a a 11.0000
+x
+st
+../runs/alpharun11.st
+o
+a a 12.0000
+x
+st
+../runs/alpharun12.st
+o
+a a 13.0000
+x
+st
+../runs/alpharun13.st
+o
+a a 14.0000
+x
+st
+../runs/alpharun14.st
+o
+a a 15.0000
+x
+st
+../runs/alpharun15.st
+o
+
+Quit
