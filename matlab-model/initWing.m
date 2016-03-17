@@ -27,4 +27,7 @@ Vol_cap = 0.0002135; % Cap volume, m^3
 
 %Forces and moments
 
-%% Calculating 
+%% Calculating wing parameters
+
+
+

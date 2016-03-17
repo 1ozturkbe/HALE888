@@ -1,13 +1,18 @@
 %Opening read and write files
-addpath('/geometries');
-file = fopen('geometries/bwborig.avl','r');
+addpath('avl_geometries');
+file = fopen('avl_geometries/hale.avl','r');
 
-suf = 'Final';
-fileID = fopen(strcat('../AVL/xfoilavl/bwbMod',suf,'.avl'),'w');
+suf = 'Init';
+fileID = fopen(strcat('avl_geometries/haleMod',suf,'.avl'),'w');
 
 fileRex = '[a-zA-Z]+[0-9a-zA-Z]*\.dat';
 
-%Geometry modification parameters
+mode = 1; % 1 for Initialization, 2 for Modification
+
+%Geometry Initialization parameters
+initWing;
+
+%Geometry Modification parameters
 sweepMod = 1.15;
 dihedralMod = 1;
 %chordMod = [1.0 1 1 1 1 1 1 1 1 1 1 1 1 1 1];
