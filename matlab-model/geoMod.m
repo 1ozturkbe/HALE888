@@ -1,4 +1,4 @@
-%Opening read and write files
+% Opening read and write files
 addpath('avl_geometries');
 file = fopen('avl_geometries/hale.avl','r');
 
@@ -6,11 +6,6 @@ suf = 'Init';
 fileID = fopen(strcat('avl_geometries/haleMod',suf,'.avl'),'w');
 
 fileRex = '[a-zA-Z]+[0-9a-zA-Z]*\.dat';
-
-mode = 1; % 1 for Initialization, 2 for Modification
-
-%Geometry Initialization parameters
-initWing;
 
 %Geometry Modification parameters
 sweepMod = 1.15;
@@ -26,7 +21,8 @@ line = fgets(file);
 fprintf(fileID,'%s \n',line);
 secID = 0;
 
-while ischar(line)
+%Geometry modification step
+while ischar(line) && mode == 2
     line = fgets(file);
     if ~ischar(line)
         break

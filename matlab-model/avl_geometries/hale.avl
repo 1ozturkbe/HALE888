@@ -1,7 +1,7 @@
 !***************************************
 !Sample AVL input dataset
 !***************************************
-16.82 HALE - SD7032 Airfoil
+16.82 HALE
 !Mach
  0.0    
 !IYsym   IZsym   Zsym
@@ -43,7 +43,18 @@ CDCL
 
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
-0.0  	1.5    0.0     1.0     0.    0          0
+0.0  	3.0    0.0     1.0     0.    0          0
+AFILE
+sd7032.dat
+CONTROL
+aileron 1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+!DESIGN
+!twist 0.0
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.0655  	6.0    0.0     0.7378     0.    0          0
 AFILE
 sd7032.dat
 CONTROL
@@ -55,7 +66,32 @@ CDCL
 
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
-0.1425  10.53  0.0     0.43    0.    0          0
+0.1202  	8.5    0.0    0.5194     0.    0          0
+AFILE
+sd7032.dat
+CONTROL
+aileron 1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+!DESIGN
+!twist 0.5
+
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.142   9.5    0.0     0.432     0.    0          0
+AFILE
+sd7032.dat
+CONTROL
+aileron 1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+!DESIGN
+!twist 1.0
+
+
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.1645  10.53  0.0     0.342    0.    0          0
 AFILE
 sd7032.dat
 CONTROL
