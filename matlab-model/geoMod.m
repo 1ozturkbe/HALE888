@@ -8,21 +8,21 @@ fileID = fopen(strcat('avl_geometries/haleMod',suf,'.avl'),'w');
 fileRex = '[a-zA-Z]+[0-9a-zA-Z]*\.dat';
 
 %Geometry Modification parameters
-sweepMod = 1.15;
+sweepMod = 1.5;
 dihedralMod = 1;
 %chordMod = [1.0 1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-chordMod = [1.075 1.05 1.025 1.0 1 1 1 1 1 1 1 1 1 1 1];
+chordMod = [1.5 1.05 1.025 1.0 1 1 1 1 1 1 1 1 1 1 1];
 leMod = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0];
 twistMod = [4 3 2 1.5 1 0.5 0 0 0 0 0 -0.5 -1 -1.5 -2.75];
 %twistMod = zeros(1,15);
-flapHingeMod = [0.9 0.7 0.7 0.7 0.7];
+%flapHingeMod = [0.9 0.7 0.7 0.7 0.7];
 
 line = fgets(file);
 fprintf(fileID,'%s \n',line);
 secID = 0;
 
 %Geometry modification step
-while ischar(line) && mode == 2
+while ischar(line)
     line = fgets(file);
     if ~ischar(line)
         break
@@ -73,23 +73,23 @@ while ischar(line) && mode == 2
             if ~isempty(regexp(line,'\w','ONCE'))
                 fprintf(fileID,'%s',line);
             end
-            if strcmp('CONTROL',deblank(line))
-                flapline = fgets(file);
-                flapinfo = strsplit(strtrim(flapline));
-                %Modify flap information
-                flapname = flapinfo{1};
-                flapInd = int64(str2double(flapname(9)));
-                flapPos = flapHingeMod(flapInd);
-                %fprintf(filedID,'%s
-                newLine = strcat([flapname,...
-                    '   ',num2str(flapinfo{2}),...
-                    '   ',num2str(flapPos),...
-                    '   ',num2str(flapinfo{4}),...
-                    '   ',num2str(flapinfo{5}),...
-                    '   ',num2str(flapinfo{6}),...
-                    '   ',num2str(flapinfo{7})]);
-                fprintf(fileID,'%s \n',newLine);
-            end
+%             if strcmp('CONTROL',deblank(line))
+%                 flapline = fgets(file);
+%                 flapinfo = strsplit(strtrim(flapline));
+%                 %Modify flap information
+%                 flapname = flapinfo{1};
+%                 %flapInd = int64(str2double(flapname(9)));
+%                 flapPos = flapHingeMod(flapInd);
+%                 %fprintf(filedID,'%s
+%                 newLine = strcat([flapname,...
+%                     '   ',num2str(flapinfo{2}),...
+%                     '   ',num2str(flapPos),...
+%                     '   ',num2str(flapinfo{4}),...
+%                     '   ',num2str(flapinfo{5}),...
+%                     '   ',num2str(flapinfo{6}),...
+%                     '   ',num2str(flapinfo{7})]);
+%                 fprintf(fileID,'%s \n',newLine);
+%             end
         end
     end
 end
