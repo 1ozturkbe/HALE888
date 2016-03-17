@@ -56,5 +56,5 @@ for alpha = alphas
     CM = [CM runinfo.CMtot];
     xnp = [xnp runinfo.xnp];
 end
-save(['avl results/' runname],'CL','CD','CM','xnp');
+save(['avl_run_outputs/' runname],'CL','CD','CM','xnp');
 toc
