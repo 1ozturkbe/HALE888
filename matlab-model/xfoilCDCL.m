@@ -78,23 +78,23 @@ while ischar(line)
         b2 = -2*CL0*a2;
         c2 = CD0 - a2*CL0^2 - b2*CL0;
         
-        addpath('../../MATLAB tools/');
+%         addpath('../../MATLAB tools/');
         CDCL = [polar.CL(1) polar.CD(1) polar.CL(minidx)...
             polar.CD(minidx) polar.CL(end) polar.CD(end)];
         endidx = length(polar.CD);
-        p = prettyplot('parabola');
-        p.largedata(polar.CD, polar.CL,'b');
-        p.data(CDCL(2:2:end),CDCL(1:2:end),'g');
-        p.model(a1*polar.CL(minidx:end).^2+b1*polar.CL(minidx:end)...
-            +c1, polar.CL(minidx:end),'g');
-        p.model(a2*polar.CL(1:minidx).^2+b2*polar.CL(1:minidx)...
-            +c2, polar.CL(1:minidx),'r');
-        p.title('XFOIL dragpolar for orig0mod.dat run at 50mph')
-        p.legend('SouthEast','raw data',...
-            'selected points','upper parabolic approximation',...
-            'lower parabolic approximation')
-        p.xlabel('C_D');
-        p.ylabel('C_L');
+%         p = prettyplot('parabola');
+%         p.largedata(polar.CD, polar.CL,'b');
+%         p.data(CDCL(2:2:end),CDCL(1:2:end),'g');
+%         p.model(a1*polar.CL(minidx:end).^2+b1*polar.CL(minidx:end)...
+%             +c1, polar.CL(minidx:end),'g');
+%         p.model(a2*polar.CL(1:minidx).^2+b2*polar.CL(1:minidx)...
+%             +c2, polar.CL(1:minidx),'r');
+%         p.title('XFOIL dragpolar for orig0mod.dat run at 50mph')
+%         p.legend('SouthEast','raw data',...
+%             'selected points','upper parabolic approximation',...
+%             'lower parabolic approximation')
+%         p.xlabel('C_D');
+%         p.ylabel('C_L');
         save(['../xfoil_run_outputs/' airfoilfile{1}(1:end-4) filenames],'CDCL');
     end
     line = fgets(file);
