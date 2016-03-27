@@ -95,7 +95,7 @@ while ischar(line)
             'lower parabolic approximation')
         p.xlabel('C_D');
         p.ylabel('C_L');
-        save(['../xfoil results/' airfoilfile{1}(1:end-4) filenames],'CDCL');
+        save(['../xfoil_run_outputs/' airfoilfile{1}(1:end-4) filenames],'CDCL');
     end
     line = fgets(file);
 end

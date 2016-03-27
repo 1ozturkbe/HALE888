@@ -1,0 +1,4 @@
+filename = 'bwborig.avl';
+text = fileread(filename);
+text = 'some text\nSECTION\nE-mail Address:  user123@gmail.com\nBilling Address:'
+r = regexp(text,'(.*)\nAFILE\n(\w*\.dat)(\s*CONTROL\n(?:.*))*','match','lineanchors');
