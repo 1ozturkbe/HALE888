@@ -50,8 +50,7 @@ CONTROL
 aileron 1.0  0.7  0. 0. 0.  -1
 CDCL
 0.0 0.0154 0.6 0.00732 1.2 0.0135
-!DESIGN
-!twist 0.0
+
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
 0.0655  	6.0    0.0     0.7378     0.    0          0
@@ -61,8 +60,6 @@ CONTROL
 aileron 1.0  0.7  0. 0. 0.  -1
 CDCL
 0.0 0.0154 0.6 0.00732 1.2 0.0135
-!DESIGN
-!twist 0.5
 
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
@@ -73,8 +70,6 @@ CONTROL
 aileron 1.0  0.7  0. 0. 0.  -1
 CDCL
 0.0 0.0154 0.6 0.00732 1.2 0.0135
-!DESIGN
-!twist 0.5
 
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
@@ -85,9 +80,6 @@ CONTROL
 aileron 1.0  0.7  0. 0. 0.  -1
 CDCL
 0.0 0.0154 0.6 0.00732 1.2 0.0135
-!DESIGN
-!twist 1.0
-
 
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
@@ -98,8 +90,6 @@ CONTROL
 aileron  1.0  0.7  0. 0. 0.  -1
 CDCL
 0.0 0.0211 0.6 0.0120 1.2 0.0189
-DESIGN
-twist 1.0
 
 #--------------------------------------------------
 SURFACE

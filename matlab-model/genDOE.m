@@ -1,3 +1,4 @@
+global newWing newRef newInd
 %Defining the DOE space
 nFactors = 9;
 nLevels = 5;
@@ -31,7 +32,7 @@ alphaI = -2:1:2; nalphaI = length(alphaI); % angle of attack adjustment
 fullFact = fullfact(ones(1,nFactors)*nLevels); %full factorial design, calculation of all levels
 fullFactInd = 1:1:size(fullFact,1);                  %FF design indices
 nWings = 2000;                                 %Number of wings to sample  
-sampleInd = datasample(fullFactInd,nWings,'Replace',false) %sampling indices
+sampleInd = datasample(fullFactInd,nWings,'Replace',false); %sampling indices
 
 % Sample full factorial to generate fractional factorial
 factorLevels = fullFact(sampleInd,:);
@@ -52,6 +53,7 @@ initWing = [0 0 0 1 0 0 0;
 
 
 %% Creating more wings
+addpath('avl_geometries');
 % Note that the center 3 ft of the wing will be designer to be a straight
 % section. 
 bCent = 3;
@@ -61,10 +63,11 @@ crInit = initWing(1,4); bInit = initWing(6,2);
 
 lami = 0; bi = 0; cri = 0; 
 
-for i = 1:10
+for i = 1:nWings
+    newInd = i;
     newWing = initWing;
     newRef = initRef;
-    flInt = factorLevels(i,:) %Levels of factors for current design
+    flInt = factorLevels(i,:); %Levels of factors for current design
     alphaij = [];
     %Deciphering wing modifications from the factor levels
     for j = 1:nFactors
@@ -90,6 +93,8 @@ for i = 1:10
     newWing(:,1) = chordArr/4; % Wing c/4 aligned along wing. 
     newWing(:,4) = chordArr;
     newWing(:,5) = newWing(:,5) + alphaij';
-    end
+    geoMod;
+end
+
 
     
