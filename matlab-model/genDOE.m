@@ -1,5 +1,5 @@
 tic 
-global newWing newRef newInd
+global newWing newRef newInd cri bi
 %Defining the DOE space
 nFactors = 9;
 nLevels = 5;
@@ -39,7 +39,6 @@ sampleInd = datasample(fullFactInd,nWings,'Replace',false); %sampling indices
 factorLevels = fullFact(sampleInd,:);
 
 %% Generating the geometry inputs
-
 %Initial inputs
 initRef = [15.91 0.755 21.06]; %Sref, Cref, Bref (ft)
 initWing = [0 0 0 1 0 0 0;
@@ -49,9 +48,6 @@ initWing = [0 0 0 1 0 0 0;
     0.142 9.5 0 0.432 0 0.75 0;
     0.1645 10.53 0 0.342 1 0 0];
 %Xle Yle Zle Chord Ainc Nspanwise Sspace
-
-%% Initializing with first inputs
-
 
 %% Creating more wings
 addpath('avl_geometries');
@@ -63,6 +59,8 @@ SrefInit = initRef(1); crefInit = initRef(2); brefInit = initRef(3);
 crInit = initWing(1,4); bInit = initWing(6,2);
 
 lami = 0; bi = 0; cri = 0; 
+structEval = []; %mass and tip deflection each stored
+fuelEval = []; %fuel volume of each wing stored 
 
 for i = 1:nWings
     newInd = i;
@@ -70,6 +68,7 @@ for i = 1:nWings
     newRef = initRef;
     flInt = factorLevels(i,:); %Levels of factors for current design
     alphaij = [];
+    cri = 0;
     %Deciphering wing modifications from the factor levels
     for j = 1:nFactors
         if j == bInd
@@ -94,6 +93,12 @@ for i = 1:nWings
     newWing(:,1) = chordArr/4; % Wing c/4 aligned along wing. 
     newWing(:,4) = chordArr;
     newWing(:,5) = newWing(:,5) + alphaij';
+    %Evaluating performance of wings
+    [W_wing, delta_tip] = structRun();
+    structEval = [structEval; [W_wing, delta_tip]];
+    %PLACEHOLDER for LoDEval;
+    %PLACEHOLDER for fuelEval;
+    %Putting the newWing into AVL format using geoMod
     geoMod;
 end
 
