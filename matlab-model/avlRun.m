@@ -4,13 +4,14 @@
 tic
 % AVL located in avl_geometries/avl.exe
 % .avl filepath relative to avl.exe
-runname = 'bwbdrag100';
+runname = 'hale';
 M = 0.1314;
 a = 340.3;
 velocity = M*a;
 avlfilepath = ['../avl_template_geometries/' runname, '.avl'];
-runfilename = 'anglesweep';
+runfilename = 'sweepalphas';
 runfilepath = ['avl_run_inputs/' runfilename '.run'];
+outfilename = 'angleofattack';
 outfilepath = ['avl_run_outputs/' runfilename]; 
 alphas = -3:15;
 
