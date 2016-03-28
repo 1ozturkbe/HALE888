@@ -1,4 +1,4 @@
-function [area, xyarray] = volumeCalc(airfoilpath, tolerablethickness)
+function [area, xyarray] = areaCalc(airfoilpath, tolerablethickness)
 % tolerablethickness is in fractional percentage (0.05)
 % airfoilpath = 'fuse_sd7032.dat';
 % tolerablethickness = 0.05;
