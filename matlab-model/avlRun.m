@@ -1,16 +1,15 @@
-function [CL, CD, alphas] = avlRun(runname, M, a)
+function [CL, CD, alphas] = avlRun(runname, M)
 % Code readapted from http://www.uavs.us/2011/12/02/matlab-avl-control/
 % AVL located in avl_geometries/avl.exe, all airfoils in local path
 % runname = 'hale';
 % M = 0.1314;
-% a = 340.3;
+
 tic
-velocity = M*a;
 avlfilepath = ['../avl_template_geometries/' runname, '.avl'];
-runfilename = 'sweepalphas';
+runfilename = 'alphasweep';
 runfilepath = ['avl_run_inputs/' runfilename '.run'];
 outfilename = 'angleofattack';
-outfilepath = ['avl_run_outputs/' runfilename]; 
+outfilepath = ['avl_run_outputs/' outfilename]; 
 alphas = -3:15;
 
 % Overwrite input file
