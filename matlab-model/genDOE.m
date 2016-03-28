@@ -96,10 +96,10 @@ for i = 1:nWings
     %Evaluating performance of wings
     [W_wing, delta_tip] = structRun();
     structEval = [structEval; [W_wing, delta_tip]];
-    %PLACEHOLDER for LoDEval;
-    %PLACEHOLDER for fuelEval;
+    fuelVolume = fuelEval(newWing);
     %Putting the newWing into AVL format using geoMod
     geoMod;
+    [LoD, alphas] = LoDeval(newInd); %for several alphas
 end
 
 toc

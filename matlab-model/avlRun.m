@@ -1,17 +1,17 @@
 %% Create run file
+% TODO: test and convert to function
 % Code readapted from http://www.uavs.us/2011/12/02/matlab-avl-control/
 tic
-% AVL located in AVL/airfoils/avl.exe
+% AVL located in avl_geometries/avl.exe
 % .avl filepath relative to avl.exe
-% runname = 'hale';
-avlfile = ['avl_geometries/' runname, '.avl'];
-M = MN(choice);
+runname = 'hale';
+M = 0.8;
+a = 340.3;
 velocity = M*a;
-runfile = ['avl_run_inputs/' runname, '.run']; %name of the Run file
+avlfile = [runname, '.avl'];
+runfile = ['avl_run_inputs/' runname, '.run'];
 outfile = ['avl_run_outputs/' runname]; 
 alphas = -3:15;
-
-%delete([filename '*'])
 
 %% Operate AVL
 % Overwrite input file
@@ -32,7 +32,7 @@ alpharep = alpharep(:)';
 fprintf(fid, ['a a %6.4f\n'...
               'x\n'...
               'st\n'...
-              '../',runfile,'%d.st\n'...
+              '../',outfile,'%d.st\n'...
               'o\n'],alpharep);
 
 % Drop out of OPER menu, quit AVL and close the file
@@ -41,8 +41,8 @@ fprintf(fid, 'Quit\n');
 fclose(fid);
 
 % Run filename.run with AVL
-cd('xfoilavl');
-[status,result] = dos(['avl.exe < ../' runfile '.run']);
+cd('airfoils_and_geometries');
+[status,result] = dos(['avl.exe < ../' runfile]);
 disp(result);
 cd('../');
 
@@ -51,12 +51,12 @@ CL = [];
 CD = [];
 CM = [];
 xnp = [];
-for alpha = alphas
-    runinfo = getruninfo([runfile num2str(alpha) '.st']);
-    CL = [CL runinfo.CLtot];
-    CD = [CD runinfo.CDtot];
-    CM = [CM runinfo.CMtot];
-    xnp = [xnp runinfo.xnp];
-end
-save(outfile,'CL','CD','CM','xnp');
+% for alpha = alphas
+%     runinfo = getruninfo([outfile num2str(alpha) '.st']);
+%     CL = [CL runinfo.CLtot];
+%     CD = [CD runinfo.CDtot];
+%     CM = [CM runinfo.CMtot];
+%     xnp = [xnp runinfo.xnp];
+% end
+% LoD = CL./CD;
 toc
