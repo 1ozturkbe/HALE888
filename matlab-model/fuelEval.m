@@ -1,4 +1,4 @@
-%function fuelEval(wingparam)
+function fuelEval(wingparam)
 %n=6    n x [Xle    Yle     Zle Chord   Ainc    Nspanwise Sspace]
 %wingparam = [0      0       0   1       0       0       0;
 %             0      3       0   1       0       0       0;
@@ -7,7 +7,7 @@
 %             0.142  9.5     0   0.432   0       0.75    0;
 %             0.1645 10.53   0   0.342   1       0       0];
 n = size(wingparam,1);
-n = n-2; % if we don't want to count all the sections
+n = n; % if we don't want to count all the sections do n-2 or n-3
 yle_idx = 2;
 chord_idx = 4;
 airfoilpath = 'sd7032.dat';
@@ -24,4 +24,4 @@ for i = 2:n
     panel1 = panel2;
 end
         
-%end
+end

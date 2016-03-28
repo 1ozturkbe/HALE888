@@ -93,13 +93,16 @@ for i = 1:nWings
     newWing(:,1) = chordArr/4; % Wing c/4 aligned along wing. 
     newWing(:,4) = chordArr;
     newWing(:,5) = newWing(:,5) + alphaij';
-    %Evaluating performance of wings
+    %Evaluating performance of wings (structural, fuel capacity)
     [W_wing, delta_tip] = structRun();
     structEval = [structEval; [W_wing, delta_tip]];
     fuelVolume = fuelEval(newWing);
+    fuelOutputs = [fuelOutputs; fuelVolume];
     %Putting the newWing into AVL format using geoMod
     geoMod;
-    [LoD, alphas] = LoDeval(newInd); %for several alphas
+    a = 340; %m/s
+    total_weight = 5*W_wing;
+    [LoD, alphas] = LoDeval(newInd, total_weight, Sref, rho, V, a); 
 end
 
 toc
