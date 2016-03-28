@@ -4,20 +4,21 @@
 tic
 % AVL located in avl_geometries/avl.exe
 % .avl filepath relative to avl.exe
-runname = 'hale';
-M = 0.8;
+runname = 'bwbdrag100';
+M = 0.1314;
 a = 340.3;
 velocity = M*a;
-avlfile = [runname, '.avl'];
-runfile = ['avl_run_inputs/' runname, '.run'];
-outfile = ['avl_run_outputs/' runname]; 
+avlfilepath = ['../avl_template_geometries/' runname, '.avl'];
+runfilename = 'anglesweep';
+runfilepath = ['avl_run_inputs/' runfilename '.run'];
+outfilepath = ['avl_run_outputs/' runfilename]; 
 alphas = -3:15;
 
 %% Operate AVL
 % Overwrite input file
-fid = fopen(runfile, 'w');
+fid = fopen(runfilepath, 'w');
 %Load the AVL definition of the aircraft
-fprintf(fid, 'LOAD %s\n', avlfile);
+fprintf(fid, 'LOAD %s\n', avlfilepath);
 
 % Disable Graphics
 fprintf(fid,'PLOP\ng\n\n');
@@ -32,17 +33,20 @@ alpharep = alpharep(:)';
 fprintf(fid, ['a a %6.4f\n'...
               'x\n'...
               'st\n'...
-              '../',outfile,'%d.st\n'...
+              '../',outfilepath,'%d.st\n'...
               'o\n'],alpharep);
-
+          
 % Drop out of OPER menu, quit AVL and close the file
 fprintf(fid, '\n');
 fprintf(fid, 'Quit\n'); 
 fclose(fid);
 
 % Run filename.run with AVL
+% preallocate filespace for the .st files, so that they can be overwritten
+arrayfun(@(alpha) createrunfiles(...
+    sprintf('%s%d.st',outfilepath,alpha)), alphas);
 cd('airfoils_and_geometries');
-[status,result] = dos(['avl.exe < ../' runfile]);
+[status,result] = dos(['avl.exe < ../' runfilepath]);
 disp(result);
 cd('../');
 
