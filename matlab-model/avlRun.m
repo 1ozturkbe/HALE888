@@ -5,7 +5,7 @@ function [CL, CD, alphas] = avlRun(runname, M)
 % M = 0.1314;
 
 tic
-avlfilepath = ['../avl_template_geometries/' runname, '.avl'];
+avlfilepath = ['../avl_geometries/' runname, '.avl'];
 runfilename = 'alphasweep';
 runfilepath = ['avl_run_inputs/' runfilename '.run'];
 outfilename = 'angleofattack';
@@ -42,7 +42,7 @@ fclose(fid);
 % preallocate filespace for the .st files, so that they can be overwritten
 arrayfun(@(alpha) createrunfiles(...
     sprintf('%s%d.st',outfilepath,alpha)), alphas);
-cd('airfoils_and_geometries');
+cd('airfoils_and_executables');
 [status,result] = dos(['avl.exe < ../' runfilepath]);
 %disp(result);
 cd('../');
