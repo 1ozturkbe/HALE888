@@ -100,9 +100,9 @@ for i = 1:nWings
     fuelEval = [fuelEval; fuelVolume];
     %Putting the newWing into AVL format using geoMod
     geoMod;
-    a = 340; %m/s
-    total_weight = 5*W_wing;
-    [LoD, alphas] = LoDeval(newInd, total_weight, Sref, rho, V, a);
+    a = 320; %m/s
+    total_weight = 71.41*.454*9.81; %N
+    [LoD, alphas] = LoDeval(newInd, total_weight, newRef(1), rho, V, a);
     LoDEval = [LoDEval; LoD];
 end
 
