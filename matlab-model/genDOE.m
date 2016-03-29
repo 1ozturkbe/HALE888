@@ -59,6 +59,13 @@ bCent = 3;
 bInd = 1; crInd = 2; lamInd = 3; aInd = 4:9;
 SrefInit = initRef(1); crefInit = initRef(2); brefInit = initRef(3);
 crInit = initWing(1,4); bInit = initWing(6,2);
+newWing = initWing;
+newRef = initRef;
+bi = bInit;
+cri = crInit;
+
+[W_wingInit, delta_tipInit] = structRun();
+fuelVolumeInit = fuelVol(newWing);
 
 lami = 0; bi = 0; cri = 0; 
 structEval = []; %mass and tip deflection each stored
