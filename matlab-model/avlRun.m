@@ -10,7 +10,7 @@ runfilename = 'alphasweep';
 runfilepath = ['avl_run_inputs/' runfilename '.run'];
 outfilename = 'angleofattack';
 outfilepath = ['avl_run_outputs/' outfilename]; 
-alphas = -3:15;
+alphas = -3:2:7;
 
 % Overwrite input file
 fid = fopen(runfilepath, 'w');
