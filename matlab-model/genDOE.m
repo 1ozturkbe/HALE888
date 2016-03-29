@@ -88,7 +88,7 @@ for i = 1:nWings
     newRef(1) = 2*(bCent*cri + (1+lami)/2*cri*(bi-bCent)); %reference area
     newRef(2) = newRef(1)/newRef(3); %reference chord
     %Rewriting wing geometry array
-    newWing(3:6,2) = newWing(3:6,2)*bScalingflInt(bInd)); % scaling y position of le
+    newWing(3:6,2) = newWing(3:6,2)*bScaling(flInt(bInd)); % scaling y position of le
     chordArr = [cri]; % changing all of the wing chords and xles
     ctip = cri*lami;
     chordArr = [chordArr; linspace(cri,cri*lami,5)'];
@@ -104,7 +104,7 @@ for i = 1:nWings
     geoMod;
     a = 320; %m/s
     total_weight = 71.41*.454*9.81; %N
-    [LoD] = LoDeval(newInd, total_weight, newRef(1), rho, V, a);
+    [LoD] = LoDeval(newInd, total_weight, newRef(1), rho, V, a)
     LoDEval = [LoDEval; LoD];
 end
 
