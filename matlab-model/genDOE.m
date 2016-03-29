@@ -88,7 +88,7 @@ for i = 1:nWings
     newRef(1) = 2*(bCent*cri + (1+lami)/2*cri*(bi-bCent)); %reference area
     newRef(2) = newRef(1)/newRef(3); %reference chord
     %Rewriting wing geometry array
-    newWing(3:6,2) = newWing(3:6,2)*bScaling(flInt(bInd)); % scaling y position of le
+    newWing(3:6,2) = newWing(3:6,2)*bScalingflInt(bInd)); % scaling y position of le
     chordArr = [cri]; % changing all of the wing chords and xles
     ctip = cri*lami;
     chordArr = [chordArr; linspace(cri,cri*lami,5)'];
