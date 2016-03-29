@@ -3,6 +3,8 @@ global newWing newRef newInd cri bi
 %Defining the DOE space
 nFactors = 9;
 nLevels = 5;
+V = 25; % flight speed, m/s
+rho = 0.738; % air density, kg/m^3
 
 % J selected so that
 % nRows = nFactors^J
@@ -102,7 +104,7 @@ for i = 1:nWings
     geoMod;
     a = 320; %m/s
     total_weight = 71.41*.454*9.81; %N
-    [LoD, alphas] = LoDeval(newInd, total_weight, newRef(1), rho, V, a);
+    [LoD] = LoDeval(newInd, total_weight, newRef(1), rho, V, a);
     LoDEval = [LoDEval; LoD];
 end
 
