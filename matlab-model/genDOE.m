@@ -105,7 +105,7 @@ for i = 1:nWings
     %Evaluating performance of wings (structural, fuel capacity)
     [W_wing, delta_tip] = structRun();
     structEval = [structEval; [W_wing, delta_tip]];
-    fuelVolume = 2*fuelVol(newWing)*.3048^3;
+    fuelVolume = fuelVol(newWing);
     fuelEval = [fuelEval; fuelVolume];
     %Putting the newWing into AVL format using geoMod
     geoMod;

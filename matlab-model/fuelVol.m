@@ -23,5 +23,5 @@ for i = 2:n
     fuelVolume = fuelVolume + sectionVolume;
     panel1 = panel2;
 end
-        
+fuelVolume = 2*.3048^3*fuelVolume;        
 end
