@@ -1,4 +1,4 @@
-function fuelEval(wingparam)
+function fuelVol(wingparam)
 %n=6    n x [Xle    Yle     Zle Chord   Ainc    Nspanwise Sspace]
 %wingparam = [0      0       0   1       0       0       0;
 %             0      3       0   1       0       0       0;

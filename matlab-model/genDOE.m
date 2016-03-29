@@ -61,7 +61,7 @@ crInit = initWing(1,4); bInit = initWing(6,2);
 lami = 0; bi = 0; cri = 0; 
 structEval = []; %mass and tip deflection each stored
 fuelEval = []; %fuel volume of each wing stored 
-
+LoDEval = [];
 for i = 1:nWings
     newInd = i;
     newWing = initWing;
@@ -96,13 +96,14 @@ for i = 1:nWings
     %Evaluating performance of wings (structural, fuel capacity)
     [W_wing, delta_tip] = structRun();
     structEval = [structEval; [W_wing, delta_tip]];
-    fuelVolume = fuelEval(newWing);
-    fuelOutputs = [fuelOutputs; fuelVolume];
+    fuelVolume = fuelVol(newWing);
+    fuelEval = [fuelEval; fuelVolume];
     %Putting the newWing into AVL format using geoMod
     geoMod;
     a = 340; %m/s
     total_weight = 5*W_wing;
-    [LoD, alphas] = LoDeval(newInd, total_weight, Sref, rho, V, a); 
+    [LoD, alphas] = LoDeval(newInd, total_weight, Sref, rho, V, a);
+    LoDEval = [LoDEval; LoD];
 end
 
 toc
