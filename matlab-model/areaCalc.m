@@ -4,7 +4,7 @@ function [area, xyarray] = areaCalc(airfoilpath, tolerablethickness)
 % tolerablethickness = 0.05;
 
 %% Parse "all" airfoil files, and get the x.xxxx y.yyyy geometry
-fid = fopen(airfoilpath);
+fid = fopen(['airfoils_and_executables/' airfoilpath]);
 tline = fgetl(fid);
 matchinglines = '';
 regex = '([-+]?([0-9]*\.[0-9]{3,})[^\S\n]+[-+]?([0-9]*\.[0-9]{3,}))';
