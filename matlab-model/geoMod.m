@@ -36,7 +36,7 @@ while ischar(line)
         fprintf(fileID,'%s',line);
         %Reading Xle,Yle,Zle,Chord,Ainc values
         line = fgets(file);
-        fprintf(fileID,'%s',num2str(newWing(secID,:)));       
+        fprintf(fileID,'%s \n',num2str(newWing(secID,:)));       
         %Writing Xle,Yle,Zle,Chord,Ainc values
 %         newLine = strcat(['   ',num2str(Xle),...
 %             '   ',num2str(Yle),...
