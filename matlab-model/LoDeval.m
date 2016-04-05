@@ -1,8 +1,7 @@
-function LoD = LoDeval(newInd, total_weight, Sref, rho, V, a)
-CL_required = total_weight/(0.5*rho*V^2*Sref*.3048^2);
-suf = num2str(newInd);
-runname = ['haleMod', suf];
-[CL, CD, ~] = avlRun(runname, V/a);
-CD_required = interp1(CL, CD, CL_required);
-LoD = CL_required/CD_required;
+function [Lift, LoD] = LoDeval(newInd, Sref, rho, V, a)
+    suf = num2str(newInd);
+    runname = ['haleMod', suf];
+    [CL, CD, ~] = avlRun(runname, V/a);
+    Lift = CL*0.5*rho*V^2*Sref*.3048^2;
+    LoD = CL/CD;
 end

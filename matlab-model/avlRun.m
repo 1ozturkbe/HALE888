@@ -10,7 +10,7 @@ runfilename = 'alphasweep';
 runfilepath = ['avl_run_inputs/' runfilename '.run'];
 outfilename = 'angleofattack';
 outfilepath = ['avl_run_outputs/' outfilename]; 
-alphas = -3:2:7;
+alphas = 0;
 
 % Overwrite input file
 fid = fopen(runfilepath, 'w');
@@ -50,14 +50,10 @@ cd('../');
 %% Reap the results
 CL = [];
 CD = [];
-CM = [];
-xnp = [];
 for alpha = alphas
     runinfo = getruninfo([outfilepath num2str(alpha) '.st']);
     CL = [CL runinfo.CLtot];
     CD = [CD runinfo.CDtot];
-    CM = [CM runinfo.CMtot];
-    xnp = [xnp runinfo.xnp];
 end
 toc
 end
