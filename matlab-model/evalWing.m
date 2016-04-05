@@ -37,14 +37,14 @@ ctip = cri*lami;
 chordArr = [chordArr; linspace(cri,cri*lami,5)'];
 newWing(:,1) = chordArr/4; % Wing c/4 aligned along wing.
 newWing(:,4) = chordArr;
-newWing(:,5) = newWing(:,5) + alphaij';
+newWing(:,5) = newWing(:,5) + arr(aInd)';
 %Evaluating performance of wings (structural, fuel capacity)
 [W_wing, delta_tip] = structRun();
 fuelVolume = fuelVol(newWing);
 %Putting the newWing into AVL format using geoMod
 geoMod;
 %total_weight = 71.41*.454*9.81+W_wing; %N
-[Lift, LoD] = LoDeval(newInd, newRef(1), rho, V, a);
+[L, LoD] = LoDeval(newInd, newRef(1), rho, V, a);
 
 
 
