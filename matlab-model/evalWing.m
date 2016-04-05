@@ -1,4 +1,4 @@
-function [L, LoD, W_wing, FuelVol, delta_tip] = evalWing(arr) 
+function [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(arr) 
 
 global newWing newRef initWing initRef newInd cri bi
 
@@ -19,59 +19,33 @@ SrefInit = initRef(1); crefInit = initRef(2); brefInit = initRef(3);
 crInit = initWing(1,4); bInit = initWing(6,2);
 newWing = initWing;
 newRef = initRef;
-bi = bInit;
-cri = crInit;
 
-[W_wingInit, delta_tipInit] = structRun();
-fuelVolumeInit = fuelVol(newWing);
-total_weight = 71.41*.454*9.81+W_wingInit; %N
+bi = bInit*arr(bInd); %Note that bi is the half-span
+cri = crInit*arr(crInd); %root chord
+lami = arr(lamInd); %taper ratio
+alphai = arr(aInd); %angle mod for each section
 
-lami = 0; bi = 0; cri = 0; 
-structEval = []; %mass and tip deflection each stored
-fuelEval = []; %fuel volume of each wing stored 
-LoDEval = [];
-for i = 1:nWings
-    newInd = i
-    newWing = initWing;
-    newRef = initRef;
-    flInt = factorLevels(i,:); %Levels of factors for current design
-    alphaij = [];
-    cri = 0;
-    %Deciphering wing modifications from the factor levels
-    for j = 1:nFactors
-        if j == bInd
-            bi = bInit*bScaling(flInt(j)); %Note that bi is the half-span
-        elseif j == crInd
-            cri = crInit*crScaling(flInt(j)); %root chord
-        elseif j == lamInd
-            lami = lam(flInt(j)); %taper ratio
-        else
-            alphaij = [alphaij alphaI(flInt(j))]; %angle mod for each section
-        end
-    end
-    %Rewriting wing reference array
-    newRef(3) = 2*bi*bScaling(flInt(j)); %reference span
-    newRef(1) = 2*(bCent*cri + (1+lami)/2*cri*(bi-bCent)); %reference area
-    newRef(2) = newRef(1)/newRef(3); %reference chord
-    %Rewriting wing geometry array
-    newWing(3:6,2) = newWing(3:6,2)*bScaling(flInt(bInd)); % scaling y position of le
-    chordArr = [cri]; % changing all of the wing chords and xles
-    ctip = cri*lami;
-    chordArr = [chordArr; linspace(cri,cri*lami,5)'];
-    newWing(:,1) = chordArr/4; % Wing c/4 aligned along wing. 
-    newWing(:,4) = chordArr;
-    newWing(:,5) = newWing(:,5) + alphaij';
-    %Evaluating performance of wings (structural, fuel capacity)
-    [W_wing, delta_tip] = structRun();
-    structEval = [structEval; [W_wing, delta_tip]];
-    fuelVolume = fuelVol(newWing);
-    fuelEval = [fuelEval; fuelVolume];
-    %Putting the newWing into AVL format using geoMod
-    geoMod;
-    total_weight = 71.41*.454*9.81+W_wing; %N
-    [LoD] = LoDeval(newInd, total_weight, newRef(1), rho, V, a);
-    LoDEval = [LoDEval; LoD];
-end
+%Rewriting wing reference array
+newRef(3) = 2*bi*arr(bInd); %reference span
+newRef(1) = 2*(bCent*cri + (1+lami)/2*cri*(bi-bCent)); %reference area
+newRef(2) = newRef(1)/newRef(3); %reference chord
+%Rewriting wing geometry array
+newWing(3:6,2) = newWing(3:6,2)*arr(bInd); % scaling y position of le
+chordArr = [cri]; % changing all of the wing chords and xles
+ctip = cri*lami;
+chordArr = [chordArr; linspace(cri,cri*lami,5)'];
+newWing(:,1) = chordArr/4; % Wing c/4 aligned along wing.
+newWing(:,4) = chordArr;
+newWing(:,5) = newWing(:,5) + alphaij';
+%Evaluating performance of wings (structural, fuel capacity)
+[W_wing, delta_tip] = structRun();
+structEval = [structEval; [W_wing, delta_tip]];
+fuelVolume = fuelVol(newWing);
+fuelEval = [fuelEval; fuelVolume];
+%Putting the newWing into AVL format using geoMod
+geoMod;
+total_weight = 71.41*.454*9.81+W_wing; %N
+[LoD] = LoDeval(newInd, total_weight, newRef(1), rho, V, a);
+LoDEval = [LoDEval; LoD];
 
-toc
     
