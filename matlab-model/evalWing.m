@@ -1,5 +1,6 @@
 function [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(arr) 
-
+% vect = [1 1 0.5 0 0 0 0 0 0]
+% [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(vect)
 global newWing newRef initWing initRef newInd cri bi
 
 V = 25; % flight speed, m/s
