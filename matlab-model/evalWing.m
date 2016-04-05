@@ -25,6 +25,7 @@ cri = crInit*arr(crInd); %root chord
 lami = arr(lamInd); %taper ratio
 alphai = arr(aInd); %angle mod for each section
 
+
 %Rewriting wing reference array
 newRef(3) = 2*bi*arr(bInd); %reference span
 newRef(1) = 2*(bCent*cri + (1+lami)/2*cri*(bi-bCent)); %reference area
@@ -45,7 +46,7 @@ fuelEval = [fuelEval; fuelVolume];
 %Putting the newWing into AVL format using geoMod
 geoMod;
 total_weight = 71.41*.454*9.81+W_wing; %N
-[LoD] = LoDeval(newInd, total_weight, newRef(1), rho, V, a);
-LoDEval = [LoDEval; LoD];
+[Lift, LoD] = LoDeval(newInd, newRef(1), rho, V, a);
+
 
     
