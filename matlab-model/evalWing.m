@@ -1,44 +1,11 @@
-function [L, LoD, W_wing, FuelVol, delta_tip] = eval(arr) 
-global newWing newRef newInd cri bi
-%Defining the DOE space
-nFactors = 9;
-nLevels = 5;
+function [L, LoD, W_wing, FuelVol, delta_tip] = evalWing(arr) 
+
 V = 25; % flight speed, m/s
 rho = 0.738; % air density, kg/m^3
 a = 320; %m/s
-% J selected so that
-% nRows = nFactors^J
-% and
-% nCols = nFactors = (nRows^J-1)/(nRows-1)
 
-%syms nRows nCols J nLevels
-% assume(nLevels,'integer')
-%assume(nRows,'integer')
-%assume(nCols,'integer')
-%assume(J,'integer')
-
-%eq1 = nRows == nLevels^J;
-%eq2 = nCols == nFactors;
-%eq3 = nCols == (nLevels^J-1)/(nLevels-1);
-
-%[nRows nCols J] = solve([eq1 eq2 eq3],[nRows nCols J])
-%df = oa_permut(nLevels,nFactors,J)
-
-%% Generating fractional factorial representation
-lam = 0.2:0.2:1; nlam = length(lam); % taper ratio adjustment
-bScaling = 0.8:0.1:1.2; nbScaling = length(bScaling); % span scaling
-crScaling = 0.8:0.1:1.2; ncrScaling = length(crScaling); % root chord scaling
-alphaI = -2:1:2; nalphaI = length(alphaI); % angle of attack adjustment 
-%The format of the representation is [b cr lam alphaI*6]
-
-%df = oa_permut(nLevels,nFactors,J)
-fullFact = fullfact(ones(1,nFactors)*nLevels); %full factorial design, calculation of all levels
-fullFactInd = 1:1:size(fullFact,1);                  %FF design indices
-nWings = 100;                                 %Number of wings to sample  
-sampleInd = datasample(fullFactInd,nWings,'Replace',false); %sampling indices
-
-% Sample full factorial to generate fractional factorial
-factorLevels = fullFact(sampleInd,:);
+% Format of arr is as follows:
+% arr = [bScaling crScaling lam a1 a2 a3 a4 a5 a6]
 
 %% Generating the geometry inputs
 %Initial inputs
@@ -52,7 +19,6 @@ initWing = [0 0 0 1 0 0 0;
 %Xle Yle Zle Chord Ainc Nspanwise Sspace (ft, ft, ft, ft, radians)
 
 %% Creating more wings
-modList = [];
 addpath('avl_geometries');
 % Note that the center 3 ft of the wing will be designer to be a straight
 % section. 
