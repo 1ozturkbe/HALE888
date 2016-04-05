@@ -40,12 +40,10 @@ newWing(:,4) = chordArr;
 newWing(:,5) = newWing(:,5) + alphaij';
 %Evaluating performance of wings (structural, fuel capacity)
 [W_wing, delta_tip] = structRun();
-structEval = [structEval; [W_wing, delta_tip]];
 fuelVolume = fuelVol(newWing);
-fuelEval = [fuelEval; fuelVolume];
 %Putting the newWing into AVL format using geoMod
 geoMod;
-total_weight = 71.41*.454*9.81+W_wing; %N
+%total_weight = 71.41*.454*9.81+W_wing; %N
 [Lift, LoD] = LoDeval(newInd, newRef(1), rho, V, a);
 
 
