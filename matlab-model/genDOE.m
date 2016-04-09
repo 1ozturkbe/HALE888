@@ -50,6 +50,7 @@ initWing = [0 0 0 1 0 0 0;
     0.1202 8.5 0 0.5194 0.5 0 0;
     0.142 9.5 0 0.432 0.75 0 0;
     0.1645 10.53 0 0.342 1 0 0];
+W_body = 71.41*.454*9.81; %N
 %Xle Yle Zle Chord Ainc Nspanwise Sspace (ft, ft, ft, ft, radians)
 
 %% Creating more wings
@@ -68,12 +69,13 @@ cri = crInit;
 
 [W_wingInit, delta_tipInit] = structRun();
 fuelVolumeInit = fuelVol(newWing);
-total_weight = 71.41*.454*9.81+W_wingInit; %N
+W_totInit = W_body+W_wingInit; %N
 
 lami = 0; bi = 0; cri = 0; 
 structEval = []; %mass and tip deflection each stored
 fuelEval = []; %fuel volume of each wing stored 
 LoDEval = [];
+W_tot = [];
 for i = 1:nWings
     newInd = i
     newWing = initWing;
@@ -112,7 +114,7 @@ for i = 1:nWings
     fuelEval = [fuelEval; fuelVolume];
     %Putting the newWing into AVL format using geoMod
     geoMod;
-    total_weight = 71.41*.454*9.81+W_wing; %N
+    W_tot = [W_tot; W_body+W_wing]; %N
     [Lift,LoD] = LoDeval(newInd, newRef(1), rho, V, a);
     LoDEval = [LoDEval; LoD];
 end
