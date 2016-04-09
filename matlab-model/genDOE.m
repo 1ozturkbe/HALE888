@@ -11,17 +11,18 @@ a = 320; %m/s
 % and
 % nCols = nFactors = (nRows^J-1)/(nRows-1)
 
-%syms nRows nCols J nLevels
+% syms nRows nCols J nLevels
 % assume(nLevels,'integer')
-%assume(nRows,'integer')
-%assume(nCols,'integer')
-%assume(J,'integer')
-
-%eq1 = nRows == nLevels^J;
-%eq2 = nCols == nFactors;
-%eq3 = nCols == (nLevels^J-1)/(nLevels-1);
-
-%[nRows nCols J] = solve([eq1 eq2 eq3],[nRows nCols J])
+% assume(nRows,'integer')
+% assume(nCols,'integer')
+% assume(J,'integer')
+% 
+% nCols = nFactors;
+% eq1 = nRows == nLevels^J;
+% eq3 = nCols == (nLevels^J-1)/(nLevels-1);
+% eq2 = J>1;
+% 
+% [nRows_sol, J_sol] = solve([eq1 eq2 eq3],[nRows J])
 %df = oa_permut(nLevels,nFactors,J)
 
 %% Generating fractional factorial representation
@@ -112,7 +113,7 @@ for i = 1:nWings
     %Putting the newWing into AVL format using geoMod
     geoMod;
     total_weight = 71.41*.454*9.81+W_wing; %N
-    [LoD] = LoDeval(newInd, total_weight, newRef(1), rho, V, a);
+    [Lift,LoD] = LoDeval(newInd, newRef(1), rho, V, a);
     LoDEval = [LoDEval; LoD];
 end
 
