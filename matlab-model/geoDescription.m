@@ -32,6 +32,6 @@ wingRef(2) = wingRef(1) / wingRef(3);                     % reference chord
 wingDescription(3:6,2) = wingDescription(3:6,2) * arr(bInd); 
 % ctip = cri*lami;
 chordArr = [cri; linspace(cri,cri*lami,5)'];
-wingDescription(:,1) = chordArr/4; % Wing c/4 aligned along wing.
+wingDescription(:,1) = -chordArr/4; % Wing c/4 aligned along wing.
 wingDescription(:,4) = chordArr;
 wingDescription(:,5) = wingDescription(:,5) + alphai';

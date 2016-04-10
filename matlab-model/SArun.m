@@ -47,14 +47,17 @@ file_perturb = 'SAWingPerturb';
 options = [];
 
 options=[];
-To=(log(0.995)/costInit)^-1; options(1)=To;
+%To=-(log(0.995)/costInit)^-1; 
+options(1)=7800;
 schedule=2; options(2)=schedule;
-dT=.2; options(3)=dT;
+dT=.3; options(3)=dT;
 neq=5; options(4)=neq;
 nfrozen=.5; options(5)=nfrozen;
 diagnostics=0; options(6)=diagnostics;
 options(7)=0;
 
-%[xbest,Ebest,xhist]=SA(xo,file_eval,file_perturb,options);
+[xbest,Ebest,xhist]=SA(xo,file_eval,file_perturb,options);
 
+bestDesign = xbest(end,:);
+[cost, LoD, deltaCost, fuelCost, liftCost, weightCost] = SAWingEval(bestDesign);
 
