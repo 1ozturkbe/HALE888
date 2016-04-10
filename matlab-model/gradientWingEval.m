@@ -1,4 +1,5 @@
 function cost = gradientWingEval(modArray)
+global bi
 [Lift, LoD, W_wing, fuelVolume, delta_tip] = evalWing(modArray);
 W_tot = 71.41*.454*9.81+W_wing; %N
 

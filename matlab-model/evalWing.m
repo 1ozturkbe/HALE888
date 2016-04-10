@@ -1,9 +1,8 @@
-function [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(arr)
+function [L, LoD, W_wing, fuelVolume, delta_tip, bi] = evalWing(arr, newInd)
 % usage:
 % vect = [1 1 0.5 0 0 0 0 0 0]
 % [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(vect)
 global rho V a
-global newInd
 
 [wingDescription, wingRef] = geoDescription(arr);
 
