@@ -2,7 +2,7 @@
 global newWing newRef newInd
 file = fopen('avl_geometries/hale.avl','r');
 
-suf = 'new';%num2str(newInd);
+suf = '0';%num2str(newInd);
 fileID = fopen(strcat('avl_geometries/haleMod',suf,'.avl'),'w');
 
 fileRex = '[a-zA-Z]+[0-9a-zA-Z]*\.dat';
