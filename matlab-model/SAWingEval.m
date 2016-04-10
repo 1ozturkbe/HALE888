@@ -4,6 +4,7 @@ global bInd crInd lamInd
 global bi cri
 global bInit crInit bCent
 global initWing initRef
+global newWing newRef
 global count
 count = count + 1
 nFactors = 9;
