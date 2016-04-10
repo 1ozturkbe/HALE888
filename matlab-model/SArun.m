@@ -4,6 +4,7 @@ global delta0b_max fuelVolReq
 global V rho a
 global bInd crInd lamInd aInd
 global bInit crInit bCent
+global count
 
 % Flight parameters
 V = 25; % flight speed, m/s
@@ -37,4 +38,24 @@ bi = bInit;
 cri = crInit;
 
 initMod = [1 1 .5 0 0 0 0 0 0];
-costInit = SAWingEval(initMod)
+costInit = SAWingEval(initMod);
+
+% Running the simulated annealing algorithm
+count = 0
+xo = initMod;
+file_eval = 'SAWingEval';
+file_perturb = 'SAWingPerturb';
+options = [];
+
+options=[];
+To=(log(0.995)/costInit)^-1; options(1)=To;
+schedule=2; options(2)=schedule;
+dT=.5; options(3)=dT;
+neq=50; options(4)=neq;
+nfrozen=.5; options(5)=nfrozen;
+diagnostics=0; options(6)=diagnostics;
+options(7)=0;
+
+[xbest,Ebest,xhist]=SA(xo,file_eval,file_perturb,options);
+
+
