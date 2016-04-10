@@ -4,6 +4,8 @@ global bInd crInd lamInd
 global bi cri
 global bInit crInit bCent
 global initWing initRef
+global count
+count = count + 1
 nFactors = 9;
 global delta0b_max fuelVolReq
 newWing = initWing;
@@ -57,4 +59,4 @@ if fuelVolume < fuelVolReq
     fuelCost = -(fuelVolume-fuelVolReq)*1000;
 end
 
-cost = -LoD + deltaCost + fuelCost + liftCost
+cost = -LoD + deltaCost + fuelCost + liftCost;
