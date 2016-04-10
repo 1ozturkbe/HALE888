@@ -46,7 +46,7 @@ fuelVolume = fuelVol(newWing);
 geoMod;
 W_tot = 71.41*.454*9.81+W_wing; %N
 
-[Lift,LoD] = LoDeval(newInd, newRef(1), rho, V, a);
+[Lift,LoD] = LoDeval(count, newRef(1), rho, V, a);
 
 % Evaluating costs (constraints)
 liftCost = 0; deltaCost = 0; fuelCost = 0;

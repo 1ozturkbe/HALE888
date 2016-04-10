@@ -38,10 +38,9 @@ bi = bInit;
 cri = crInit;
 
 initMod = [1 1 .5 0 0 0 0 0 0];
-costInit = SAWingEval(initMod);
-
-% Running the simulated annealing algorithm
 count = 0
+costInit = SAWingEval(initMod);
+% Running the simulated annealing algorithm
 xo = initMod;
 file_eval = 'SAWingEval';
 file_perturb = 'SAWingPerturb';
@@ -56,6 +55,6 @@ nfrozen=.5; options(5)=nfrozen;
 diagnostics=0; options(6)=diagnostics;
 options(7)=0;
 
-%[xbest,Ebest,xhist]=SA(xo,file_eval,file_perturb,options);
+[xbest,Ebest,xhist]=SA(xo,file_eval,file_perturb,options);
 
 
