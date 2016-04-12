@@ -1,4 +1,4 @@
-function [cost, deltaCost, fuelCost, liftCost, weightCost] = SAWingEval(modArray)
+function [cost, extrainfo] = SAWingEval(modArray)
 
 global count
 count = count + 1
@@ -23,3 +23,8 @@ if fuelVolume < fuelVolReq
 end
 
 cost = -LoD + deltaCost + fuelCost + liftCost + weightCost;
+
+extrainfo = struct('Lift', Lift, 'LoD', LoD, 'W_wing', W_wing,...
+    'fuelVolume', fuelVolume, 'delta_tip', delta_tip,...
+    'deltaCost', deltaCost, 'fueltCost', fuelCost, ...
+    'liftCost', liftCost, 'weightCost', weightCost);
