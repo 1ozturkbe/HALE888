@@ -1,4 +1,4 @@
-function [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(arr, newInd)
+function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = evalWing(arr, newInd)
 % usage:
 % vect = [1 1 0.5 0 0 0 0 0 0]
 % [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(vect)
@@ -14,7 +14,7 @@ newWing = wingDescription;
 newRef = wingRef;
 geoMod;
 %total_weight = 71.41*.454*9.81+W_wing; %N
-[L, LoD] = LoDeval(newInd, wingRef(1), rho, V, a);
+[L, LoD, extrainfo] = LoDeval(newInd, wingRef(1), rho, V, a);
 
 
 
