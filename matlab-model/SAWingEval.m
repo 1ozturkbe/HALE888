@@ -1,4 +1,4 @@
-function [cost, LoD, deltaCost, fuelCost, liftCost, weightCost] = SAWingEval(modArray)
+function [cost, deltaCost, fuelCost, liftCost, weightCost] = SAWingEval(modArray)
 global count
 count = count + 1
 global delta0b_max fuelVolReq bi

@@ -1,0 +1,15 @@
+LOAD ../avl_geometries/haleMod77.avl
+PLOP
+g
+
+OPER
+M 
+MN 0.0781
+ 
+a a 0.0000
+x
+st
+../avl_run_outputs/angleofattack0.st
+o
+
+Quit
