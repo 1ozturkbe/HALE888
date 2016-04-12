@@ -7,7 +7,7 @@ global newWing newRef
 [wingDescription, wingRef] = geoDescription(arr);
 
 % Evaluating performance of wings (structural, fuel capacity)
-[W_wing, delta_tip] = structRun();
+[W_wing, delta_tip] = structRun(wingRef);
 fuelVolume = fuelVol(wingDescription);
 %Putting the newWing into AVL format using geoMod
 newWing = wingDescription;
