@@ -4,6 +4,7 @@ function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = evalWing(arr, newI
 % [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(vect)
 global rho V a
 global newWing newRef
+disp(arr)
 [wingDescription, wingRef] = geoDescription(arr);
 
 % Evaluating performance of wings (structural, fuel capacity)
