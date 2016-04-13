@@ -51,7 +51,7 @@ options=[];
 options(1)=7800;
 schedule=2; options(2)=schedule;
 dT=.9; options(3)=dT;
-neq=15; options(4)=neq;
+neq=5; options(4)=neq;
 nfrozen=.5; options(5)=nfrozen;
 diagnostics=0; options(6)=diagnostics;
 options(7)=0;
