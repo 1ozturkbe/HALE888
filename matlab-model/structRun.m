@@ -1,6 +1,5 @@
-function [W_wing, delta_tip] = structRun()
+function [W_wing, delta_tip] = structRun(newRef, cri)
 %% Evaluates the structural performance of a given wing design
-global newWing newRef newInd cri
 g = 9.81; %m/s^2
 rho_skin = 0.1*10^-3*10^4; %kg/cm^2
 rho_cap = 1760; %kg/m^3

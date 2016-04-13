@@ -1,7 +1,8 @@
-function [wingDescription, wingRef] = geoDescription(arr) 
+function [wingDescription, wingRef, cri] = geoDescription(arr) 
 % vect = [1 1 0.5 0 0 0 0 0 0]
+global bInd crInd lamInd aInd
 global initWing
-global cri bi
+global bi
 
 % Importing globals
 %SrefInit = initRef(1); crefInit = initRef(2); brefInit = initRef(3);
@@ -12,7 +13,6 @@ wingRef = zeros(1,3);
 % "Decipher" the vector
 % Format of arr is as follows:
 % arr = [bScaling crScaling lam a1 a2 a3 a4 a5 a6]
-bInd = 1; crInd = 2; lamInd = 3; aInd = 4:9;
 bi = bInit * arr(bInd);     % Note that bi is the half-span
 cri = crInit * arr(crInd);  % root chord
 lami = arr(lamInd);         % taper ratio
