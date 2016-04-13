@@ -22,5 +22,10 @@ for i = 1:length(mod)
         pertWing(i) = min(mod(i)*(.8 + rand()*.4),1);
     else    
         pertWing(i) = mod(i) -1 + rand()*2;
+        if pertWing(i) > 4
+            pertWing(i) = 4;
+        elseif pertWing(i) < -4
+            pertWing(i) = -4;
+        end
     end
 end
