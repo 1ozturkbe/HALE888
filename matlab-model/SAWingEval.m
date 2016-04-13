@@ -1,9 +1,10 @@
-function [cost, LoD, Lift, W_tot, deltaCost, fuelCost, liftCost, weightCost] = SAWingEval(modArray)
+function [cost, extrainfo] = SAWingEval(modArray)
+
 global count
 count = count + 1
 global delta0b_max fuelVolReq bi
 
-[Lift, LoD, W_wing, fuelVolume, delta_tip] = evalWing(modArray, count);
+[Lift, LoD, W_wing, fuelVolume, delta_tip, extrainfo2] = evalWing(modArray, count);
 W_tot = 71.41*.454*9.81+W_wing; %N
 
 % Evaluating costs (constraints)
@@ -22,3 +23,10 @@ if fuelVolume < fuelVolReq
 end
 
 cost = -LoD + deltaCost + fuelCost + liftCost + weightCost;
+
+addpath('catstruct')
+extrainfo = struct('Lift', Lift, 'LoD', LoD, 'W_wing', W_wing,...
+    'fuelVolume', fuelVolume, 'delta_tip', delta_tip,...
+    'deltaCost', deltaCost, 'fueltCost', fuelCost, ...
+    'liftCost', liftCost, 'weightCost', weightCost);
+extrainfo = catstruct(extrainfo, extrainfo2);

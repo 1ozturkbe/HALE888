@@ -59,5 +59,7 @@ options(7)=0;
 [xbest,Ebest,xhist]=SA(xo,file_eval,file_perturb,options);
 
 bestDesign = xbest(end,:);
-[cost, LoD, Lift, W_tot, deltaCost, fuelCost, liftCost, weightCost] = SAWingEval(bestDesign);
+
+designAnalysis;
+
 
