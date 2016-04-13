@@ -37,7 +37,7 @@ newRef = initRef;
 bi = bInit;
 cri = crInit;
 
-initMod = [1 1 .5 0 0 0 0 0 0];
+initMod = [1.2 1.2 .8 -2 -2 -2 -2 -2 -2];
 count = 0
 costInit = SAWingEval(initMod);
 % Running the simulated annealing algorithm
@@ -48,7 +48,7 @@ options = [];
 
 options=[];
 %To=-(log(0.995)/costInit)^-1; 
-options(1)=7800;
+options(1)=780;
 schedule=2; options(2)=schedule;
 dT=.9; options(3)=dT;
 neq=5; options(4)=neq;
@@ -61,5 +61,5 @@ options(7)=0;
 bestDesign = xbest(end,:);
 
 designAnalysis;
-
+extrainfo
 
