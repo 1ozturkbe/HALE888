@@ -1,0 +1,17 @@
+init
+initMod = [1 1 .5 -1 -1 -1 -1 -1 -1];
+chords = linspace(0.1,1,30);
+bs = linspace(10,20,30);
+v_of_c = arrayfun(@(x) fuelVol(geoDescription(...
+    [initMod(1) x initMod(3:end)])), chords);
+[~, d_of_c] = arrayfun(@(x) structRun(geoDescription(...
+    [initMod(1) x initMod(3:end)])), chords);
+[~, d_of_b] = arrayfun(@(x) structRun(geoDescription(...
+    [x initMod(2:end)])), bs);
+
+function d_of_c = structRunTest(initM)
+    [~,newRef] = geoDescription([initMod(1) x initMod(3:end)]);
+structRun(geoDescription(...
+    [initMod(1) x initMod(3:end)])), chords)
+
+end

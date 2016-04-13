@@ -1,0 +1,155 @@
+!***************************************
+ 
+!Sample AVL input dataset
+!***************************************
+16.82 HALE
+!Mach
+ 0.0    
+!IYsym   IZsym   Zsym
+ 0       0       0.0
+!Sref    Cref    Bref
+17.1083      0.79045      21.6437 
+!Xref    Yref    Zref
+0.32      0.0      0.0
+
+0.0035	!Cdp fuse
+
+#=============================================
+BODY
+Fuse pod
+24  1.0
+#
+TRANSLATE
+-1.5  0.0  -.5 !Radius is 1.5
+#
+BFIL
+hale2_fuse.dat
+SURFACE 
+WING 
+!Nchordwise  Cspace  Nspanwise  Sspace
+12           1.0     24         -2.0
+YDUPLICATE 
+0.0
+ANGLE
+6.7
+
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.24111           0           0     0.96444    -0.90766           0           0 
+AFILE
+sd7032.dat
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.24111           3           0     0.96444    -0.90766           0           0 
+AFILE
+sd7032.dat
+CONTROL
+aileron 1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.21275      6.0826           0     0.85101    -0.65766           0           0 
+AFILE
+sd7032.dat
+CONTROL
+aileron 1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.18439       8.617           0     0.73757    -0.40766           0           0 
+AFILE
+sd7032.dat
+CONTROL
+aileron 1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.15604      9.6308           0     0.62414    -0.15766           0           0 
+AFILE
+sd7032.dat
+CONTROL
+aileron 1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.127678      10.6749            0     0.510712    0.0923436            0            0 
+AFILE
+sd7032.dat
+CONTROL
+aileron  1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0211 0.6 0.0120 1.2 0.0189
+#--------------------------------------------------
+SURFACE
+STAB
+!Nchordwise  Cspace  Nspanwise  Sspace
+8            1.0     8          1.0
+YDUPLICATE 
+0.0
+TRANSLATE 
+5.5  0.0  0.0
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-.125 	0    1.0     	0.5     0.    0          0
+ 
+NACA
+0008
+CONTROL
+elevator  1.0  0.7  0. 0. -0.  1
+CDCL
+-.6 0.0187 0.0 0.009 .6 0.0187
+
+
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.125	1.5    1.0     0.5     0.    0          0
+ 
+NACA
+0008
+CONTROL
+elevator  1.0  0.7  0. 0. -0.  1
+CDCL
+-.6 0.0187 0.0 0.009 .6 0.0187
+
+#--------------------------------------------------
+SURFACE
+FIN
+!Nchordwise  Cspace   Nspanewise  Sspace
+8            1.0      8           1.0
+YDUPLICATE 
+0.0
+TRANSLATE
+5.5   0.0  0.0
+SECTION 
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-.625   1.5    0        1.0    0.    0          0
+ 
+NACA
+0008
+CONTROL
+rudder  1.0  0.4  0. 0. 0.  1
+CDCL
+-.6 0.014 0.0 0.00667 .6 0.014
+
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.125  	1.5    1.0     0.5     0.    0          0
+ 
+NACA
+0008
+CONTROL
+rudder  1.0  0.4  0. 0. 0.  1
+CDCL
+-.6 0.0187 0.0 0.009 .6 0.0187
+
+
+
+
+
+

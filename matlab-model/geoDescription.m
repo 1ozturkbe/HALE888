@@ -1,8 +1,8 @@
-function [wingDescription, wingRef] = geoDescription(arr) 
+function [wingDescription, wingRef, cri] = geoDescription(arr) 
 % vect = [1 1 0.5 0 0 0 0 0 0]
 global bInd crInd lamInd aInd
 global initWing
-global cri bi
+global bi
 
 % Importing globals
 %SrefInit = initRef(1); crefInit = initRef(2); brefInit = initRef(3);

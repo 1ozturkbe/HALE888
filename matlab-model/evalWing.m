@@ -4,11 +4,13 @@ function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = evalWing(arr, newI
 % [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(vect)
 global rho V a
 global newWing newRef
+global xarr
+xarr = arr;
 disp(arr)
-[wingDescription, wingRef] = geoDescription(arr);
+[wingDescription, wingRef, cri] = geoDescription(arr);
 
 % Evaluating performance of wings (structural, fuel capacity)
-[W_wing, delta_tip] = structRun(wingRef);
+[W_wing, delta_tip] = structRun(wingRef, cri);
 fuelVolume = fuelVol(wingDescription);
 %Putting the newWing into AVL format using geoMod
 newWing = wingDescription;
