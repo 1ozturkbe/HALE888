@@ -23,6 +23,8 @@ if fuelVolume < fuelVolReq
 end
 
 cost = -LoD + deltaCost + fuelCost + liftCost + weightCost;
+global costarr
+costarr = [costarr cost];
 
 addpath('catstruct')
 extrainfo = struct('Lift', Lift, 'LoD', LoD, 'W_wing', W_wing,...

@@ -1,5 +1,6 @@
+function geoMod(count)
 % Opening read and write files
-global newWing newRef count
+global newWing newRef
 file = fopen('avl_geometries/hale.avl','r');
 
 suf = num2str(count);
