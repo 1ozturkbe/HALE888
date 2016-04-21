@@ -1,0 +1,75 @@
+This is an implementation of Normal-Boundary Intersection for finding Pareto optimal points of multi-objective problems using the quasi-normal as developed by Das and Dennis (1996).
+
+Some of the modification is based on Hui Li's ideas.
+
+The codes have been tested in Matlab 6.5 and Matlab 7. In Matlab 6.1, Line 156 of NBI.m may cause problem and you can just comment Line 152-162 and Line 185 to run the codes (Thank Daniel Kuehne).
+
+  Copyright (c) 1996  Indraneel Das, Rice University
+  Modified:
+       myNBI version 0.1.3
+       Aug.22 2006
+       Aimin Zhou
+       Department of Computer Science, University of Essex
+       Wivenhoe Park, Colchester, CO4 3SQ, U.K
+       azhou@essex.ac.uk
+       http://privatewww.essex.ac.uk/~azhou for latest version
+
+
+The user inputs are as follows:
+  X0      : starting point for the finding the minimum of F_1
+  Spac    : an integer whose reciprocal is the discretization gridsize on each component of Weights
+  Fnum    : number of objective functions
+  VLB     : vector of lower bounds on the variables(default [])
+  VUB     : vector of upper bounds on the variables(default [])
+  TolX    : tolerance of X            (default 1E-4)
+  TolF    : tolerance of objectives   (default 1E-4)
+  TolCon  : tolerance of constraints  (default 1E-7)
+
+File List:
+  NBI.m            : the main file for solving MOPs
+  myT.m            : returns function for actual NBI subproblem
+  myTCon.m         : return  constraints for actual NBI subproblem
+  LinCom.m         : linear weights aggregation optimization for the problem
+  myLinCom.m       : evaluates the objective for LinCom
+  assert_col_vec.m : convert a vector to a column vector
+  Plots.m          : plot 2-D or 3-D graphics
+  Weights.m        : used for generate weights and search 'nearest' weight index
+  Weight_Generate.m: used for generate weights and search 'nearest' weight
+
+User defined files:
+  myFM.m          : evaluates the objective vector F(x) at a given x
+  myFS.m          :  evaluates one of the objective F_i(x), needed for finding the shadow minimum
+  myCon.m         : evaluates the constraints at a given x
+
+How to use this package:
+  1 Rewrite myFM.m, myCon.m and myFS.m for the specifid problems;
+  2 Define the corresponding parameters for the problem: X0,Spac,Fnum,VLB,VUB,TolX,TolF,TolCon;
+  3 Input command in Matlab to solve the problem:
+	[Pareto_Fmat, Pareto_Xmat] = NBI(X0,Spac,Fnum,VLB,VUB,TolX,TolF,TolCon)
+
+Examples:
+  There are two examples (one is two-objective and one is three-objective). To use the examples, firstly copy the files to the main direcory, and then type the command 'test' to see the result.
+
+Important:
+  The vectors in this package are all column vectors.
+
+Useage Suggestions:
+  0 This version is actually not the original one because the equality constraint in NBI method is removed and an adaptive penality is added to the objective of subproblem. (Thank Hui Li)	
+  1 Replace the optimizer in NBI.m, i.e 'fmincon' with a preferable one and set proper parameters.
+  2 Try some heuristic methods in which there is cooperation between the subproblems.(Please refer to Hui Li's work from privatewww.essex.ac.uk/~hlil)  
+
+Modifications:
+  version 0.1.3 2006-08-22
+  1 Remove some useless codes in myFS.m.(Thank Hady Hadiyanto)
+ 
+  version 0.1.2 2005-05-10
+  1 Remove 'vars' files and add 'test.m' to the examples.
+
+  version 0.1.1 2004-12-27
+  1 Rewrite the codes to generate weights and the "nearest" weight, comine the two processes into one;
+  2 Redesign the structure of the codes;
+  3 Delete some useless codes.
+   version 0.1
+  1 Remove some codes and files which are not connected with NBI method tightly;
+  2 Use 'fmincon' function in the Optimization Toolbox of Matlab 7 to solve constraint optimization problem;
+  3 Reedit the codes and redefine variables to make the codes more clearly.
