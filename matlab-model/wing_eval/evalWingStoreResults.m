@@ -4,7 +4,7 @@ function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = ...
 savedfilename = 'storedWingEvaluations.mat';
 savedfilepath = savedfilename;
 savedVariableName = 'savedEvaluations';
-    
+
 if exist(savedfilepath, 'file')
     load(savedfilepath)
 else 

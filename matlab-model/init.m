@@ -26,3 +26,5 @@ initWing = [0       0       0       1           0       0 0;
 
 % Need access to avl geometries folder
 addpath('avl_geometries');
+addpath('wing_eval')
+addpath('wing_eval\savedruns')
