@@ -8,7 +8,7 @@
 !IYsym   IZsym   Zsym
  0       0       0.0
 !Sref    Cref    Bref
-13.2455     0.934774      14.1697 
+15.062     0.993709      15.1574 
 !Xref    Yref    Zref
 0.32      0.0      0.0
 
@@ -35,23 +35,14 @@ ANGLE
 
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
--0.24578           0           0      0.9831     0.52082           0           0 
+-0.23443           0           0     0.93772     -1.7154           0           0 
 AFILE
 sd7032.dat
 CDCL
 0.0 0.0154 0.6 0.00732 1.2 0.0135
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
--0.24578           3           0      0.9831     -1.0788           0           0 
-AFILE
-sd7032.dat
-CONTROL
-aileron 1.0  0.7  0. 0. 0.  -1
-CDCL
-0.0 0.0154 0.6 0.00732 1.2 0.0135
-SECTION
-!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
--0.20434      4.9216           0     0.81736     0.56954           0           0 
+-0.23443           3           0     0.93772    -0.51714           0           0 
 AFILE
 sd7032.dat
 CONTROL
@@ -60,7 +51,7 @@ CDCL
 0.0 0.0154 0.6 0.00732 1.2 0.0135
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
--0.16291      6.9722           0     0.65163     0.91263           0           0 
+-0.21661      5.0902           0     0.86644      1.1068           0           0 
 AFILE
 sd7032.dat
 CONTROL
@@ -69,7 +60,7 @@ CDCL
 0.0 0.0154 0.6 0.00732 1.2 0.0135
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
--0.12147      7.7925           0     0.48589      1.1495           0           0 
+-0.19879      7.2111           0     0.79515    -0.92945           0           0 
 AFILE
 sd7032.dat
 CONTROL
@@ -78,7 +69,16 @@ CDCL
 0.0 0.0154 0.6 0.00732 1.2 0.0135
 SECTION
 !Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
--0.080038      8.6373           0     0.32015     0.79371           0           0 
+-0.18096      8.0595           0     0.72386    -0.95659           0           0 
+AFILE
+sd7032.dat
+CONTROL
+aileron 1.0  0.7  0. 0. 0.  -1
+CDCL
+0.0 0.0154 0.6 0.00732 1.2 0.0135
+SECTION
+!Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+-0.16314      8.9333           0     0.65257      2.4594           0           0 
 AFILE
 sd7032.dat
 CONTROL
