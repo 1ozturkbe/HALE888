@@ -5,7 +5,7 @@ function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = evalWing(arr, newI
 global rho V a
 global newWing newRef
 global xarr
-xarr = arr;
+xarr = [xarr arr];
 disp(arr)
 [wingDescription, wingRef, cri] = geoDescription(arr);
 
@@ -15,7 +15,7 @@ fuelVolume = fuelVol(wingDescription);
 %Putting the newWing into AVL format using geoMod
 newWing = wingDescription;
 newRef = wingRef;
-geoMod;
+geoMod(newInd);
 %total_weight = 71.41*.454*9.81+W_wing; %N
 [L, LoD, extrainfo] = LoDeval(newInd, wingRef(1), rho, V, a);
 
