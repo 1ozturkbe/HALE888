@@ -1,5 +1,5 @@
 init
-levels = 9;
+levels = 20;
 ff = fullfact(levels * ones(1,3));
 bs = linspace(0.85,1.15,levels);
 cs = linspace(0.8,1.2,levels);
