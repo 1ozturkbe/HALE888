@@ -1,5 +1,5 @@
 function [cost, extrainfo] = SAWingEval(modArray)
-
+global fuelCost liftCost
 global count
 count = count + 1
 global delta0b_max fuelVolReq bi
@@ -19,7 +19,7 @@ if delta_tip /(2*bi) > delta0b_max
     deltaCost = (delta_tip/2*bi - delta0b_max)*6;
 end
 if fuelVolume < fuelVolReq
-    fuelCost = -(fuelVolume-fuelVolReq)*1000;
+    fuelCost = -(fuelVolume-fuelVolReq)*3000;
 end
 
 cost = -LoD + deltaCost + fuelCost + liftCost + weightCost;
@@ -34,3 +34,4 @@ extrainfo = struct('Lift', Lift, 'LoD', LoD, 'W_wing', W_wing,...
 extrainfo = catstruct(extrainfo, extrainfo2);
 
 disp(cost);
+disp(extrainfo)
