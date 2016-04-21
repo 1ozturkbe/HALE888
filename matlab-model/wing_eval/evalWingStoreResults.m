@@ -2,7 +2,8 @@ function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = ...
     evalWingStoreResults(arr, newInd)
 % vect = [1 1 0.5 0 0 0 0 0 0]
 savedfilename = 'storedWingEvaluations.mat';
-savedfilepath = savedfilename;
+[pathtothisfile,~,~] = fileparts(mfilename('fullpath'));
+savedfilepath = [pathtothisfile '\savedruns\' savedfilename];
 savedVariableName = 'savedEvaluations';
 
 if exist(savedfilepath, 'file')
