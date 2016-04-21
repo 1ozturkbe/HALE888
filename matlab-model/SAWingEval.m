@@ -1,5 +1,5 @@
 function [cost, extrainfo] = SAWingEval(modArray)
-
+global fuelCost liftCost
 global count
 count = count + 1
 global delta0b_max fuelVolReq bi

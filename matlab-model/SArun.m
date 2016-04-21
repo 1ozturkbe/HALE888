@@ -5,6 +5,7 @@ global V rho a
 global bInd crInd lamInd aInd
 global bInit crInit bCent
 global count
+global initMod
 
 init
 % Flight parameters
@@ -38,7 +39,7 @@ newRef = initRef;
 bi = bInit;
 cri = crInit;
 
-initMod = [1.0 1.0 .5 0 0 0 0 0 0];
+%initMod = [1.0 1.0 .5 0 0 0 0 0 0];
 count = 0
 costInit = SAWingEval(initMod);
 % Running the simulated annealing algorithm
@@ -51,8 +52,8 @@ options=[];
 %To=-(log(0.995)/costInit)^-1; 
 options(1)=7800;
 schedule=2; options(2)=schedule;
-dT=.9; options(3)=dT;
-neq=15; options(4)=neq;
+dT=.5; options(3)=dT;
+neq=10; options(4)=neq;
 nfrozen=.5; options(5)=nfrozen;
 diagnostics=0; options(6)=diagnostics;
 options(7)=0;
