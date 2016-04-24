@@ -8,8 +8,8 @@ if L < W_tot
 end
 weightCost = W_wing*0.1;
 deltaCost = 0; fuelCost = 0;
-if delta0b / 2 > delta0b_max
-    deltaCost = (delta0b / 2 - delta0b_max)*6;
+if delta0b > delta0b_max
+    deltaCost = (delta0b - delta0b_max)*6;
 end
 if fuelVolume < fuelVolReq
     fuelCost = -(fuelVolume-fuelVolReq)*1000;

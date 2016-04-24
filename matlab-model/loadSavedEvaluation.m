@@ -1,11 +1,11 @@
 addpath('wing_eval/savedruns')
 load('storedWingEvaluationsGrad.mat');
-global delta0b_max fuelVolReq initRef
+global initRef
 
 wings = savedEvaluations.values;
 keys = savedEvaluations.keys;
 
-validWings = [];
+loadedWings = cell(length(wings),1);
 
 for i = 1:length(wings)
    wingRes = wings{i};
@@ -17,10 +17,11 @@ for i = 1:length(wings)
    delta_tip = wingRes.delta_tip;
    delta0b = delta_tip/b; % should this be /2b?
    LoD = wingRes.LoD;
-   if L > 0.95*W_tot && delta0b < delta0b_max && fuelVolume > fuelVolReq
-       wingRes.W_tot = W_tot;
-       wingRes.delta0b = delta0b;
-       wingRes.cost = costFunction(L, LoD, W_wing, fuelVolume, delta0b);
-       validWings = [validWings wingRes];
-   end
+   wingRes.W_tot = W_tot;
+   wingRes.delta0b = delta0b;
+   runname = wingRes.extrainfo.runname;
+   runnumber = regexp(runname, '\d+', 'match'); 
+   runnumber = str2double(runnumber{1});
+   [wingRes.cost, wingRes.costextra] = costFunction(L, LoD, W_wing, fuelVolume, delta0b);
+   loadedWings{runnumber} = wingRes;
 end
