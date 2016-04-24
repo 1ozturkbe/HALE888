@@ -19,3 +19,8 @@ for i = 1:length(wings)
        validWings = [validWings wingRes];
    end
 end
+
+b = [];
+cr
+lam
+b(1) = min(validWings.arr(1));
