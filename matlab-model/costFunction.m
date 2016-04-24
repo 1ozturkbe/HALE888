@@ -1,4 +1,4 @@
-function cost = costFunction(L, LoD, W_wing, fuelVolume, delta0b)
+function [cost, extrainfo] = costFunction(L, LoD, W_wing, fuelVolume, delta0b)
 global delta0b_max fuelVolReq
 W_tot = 71.41*.454*9.81+W_wing; %N
 % Evaluating costs (constraints)
@@ -15,3 +15,6 @@ if fuelVolume < fuelVolReq
     fuelCost = -(fuelVolume-fuelVolReq)*1000;
 end
 cost = -LoD + deltaCost + fuelCost + liftCost + weightCost;
+extrainfo = struct('W_tot', W_tot, ...
+    'fuelCot', fuelCost, 'deltaCost', deltaCost,...
+    'liftCost',liftCost,'weightCost', weightCost);
