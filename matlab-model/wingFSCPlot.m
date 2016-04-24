@@ -3,6 +3,7 @@ c = [];
 l = [];
 LoD = [];
 W_tot = [];
+W_wing = [];
 delta_tip = [];
 delta0b = [];
 fuelVolume = [];
@@ -19,5 +20,6 @@ for i = 1:length(wings)
     delta0b = [delta0b wingRes.delta0b];
     fuelVolume = [fuelVolume wingRes.fuelVolume];
     W_tot = [W_tot wingRes.W_tot];
+    W_wing = [W_wing wingRes.W_wing];
     costs = [costs wingRes.cost];
 end
