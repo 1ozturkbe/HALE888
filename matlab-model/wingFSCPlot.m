@@ -8,7 +8,7 @@ delta0b = [];
 fuelVolume = [];
 costs = [];
 
-wings = loadedWings;
+wings = validWings;
 for i = 1:length(wings)
     wingRes = wings(i);
     b = [b wingRes.arr(1)];

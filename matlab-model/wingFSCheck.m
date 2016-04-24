@@ -1,5 +1,5 @@
 addpath('wing_eval/savedruns')
-load('storedWingEvaluationsGrad.mat');
+load('storedWingEvaluationsDOE.mat');
 global delta0b_max fuelVolReq initRef
 
 wings = savedEvaluations.values;
