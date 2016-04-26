@@ -40,13 +40,13 @@ plot(W_wing(paretoWings),LoD(paretoWings),'ro');
 %% PSO of Pareto Wings to find optimal aoa
 global count
 count = 0;
-% paretoWingsAOA = [];
-% W_wingaoa = []; LoDaoa = [];
-% for i = 1:length(paretoWings);
-%     arr = wings(paretoWings(i)).arr
-%     [x, fval] = PSrun(arr,'aoa')
-%     paretoWingsAOA(i,:) = x;
-% end
+paretoWingsAOA = [];
+W_wingaoa = []; LoDaoa = [];
+for i = 1:length(paretoWings);
+    arr = wings(paretoWings(i)).arr
+    [x, fval] = PSrun(arr,'aoa')
+    paretoWingsAOA(i,:) = x;
+end
 
 for i = 1:length(paretoWings)
     [cost, extrainfo] = SAWingEval(paretoWingsAOA(i,:));
