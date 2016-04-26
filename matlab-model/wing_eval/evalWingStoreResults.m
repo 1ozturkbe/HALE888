@@ -1,7 +1,10 @@
 function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = ...
     evalWingStoreResults(arr, newInd)
 % vect = [1 1 0.5 0 0 0 0 0 0]
-savedfilename = 'storedWingEvaluations.mat';
+global savedfilename
+if ~exist('savedfilename')
+    savedfilename = 'storedWingEvaluations.mat';
+end
 [pathtothisfile,~,~] = fileparts(mfilename('fullpath'));
 savedfilepath = [pathtothisfile '\savedruns\' savedfilename];
 savedVariableName = 'savedEvaluations';
@@ -23,12 +26,15 @@ if isKey(savedEvaluations,hashedarr)
     delta_tip = results.fuelVolume;
     extrainfo = results.extrainfo;
 else
+    tic
     [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = ...
         evalWingLongRun(arr, newInd);
+    elapsed_time = toc;
     results = struct('arr', arr, ...
         'L',L,'LoD',LoD,'W_wing',W_wing,...
         'fuelVolume', fuelVolume, 'delta_tip', delta_tip,...
-        'extrainfo', extrainfo);
+        'extrainfo', extrainfo, ...
+        'count', newInd, 'elapsedtime', elapsed_time);
     savedEvaluations(hashedarr) = results;
 end
 
