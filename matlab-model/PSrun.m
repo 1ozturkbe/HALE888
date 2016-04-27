@@ -17,7 +17,7 @@ elseif strcmp(strDesc,'aoa')
     ub(1,1:3) = guess(1,1:3);
     lb(1,4:9) = guess(1,4:9)-2;
     ub(1,4:9) = guess(1,4:9)+2;
-    swarmSize = 10;
+    swarmSize = 15;
     maxIter = 20;
 end
 options = optimoptions('particleswarm','SwarmSize',swarmSize,'MaxIter',maxIter);
