@@ -101,9 +101,9 @@ for i = 2:nx
         dfac(k)*stepsize(i),j,-dfac(k)*stepsize(j))) - ...
         fun(x0 + swap2(zeros(sx),i, ...
         -dfac(k)*stepsize(i),j,dfac(k)*stepsize(j)));
-      print k  
+      disp(k)  
     end
-    print 'done 1'
+    disp('done 1');
     dij = dij/4/prod(stepsize([i,j]));
     dij = dij./(dfac.^2);
     
