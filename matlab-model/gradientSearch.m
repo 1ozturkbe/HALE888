@@ -1,4 +1,9 @@
+global savedfilename not_save_geometry_file count
+savedfilename = 'storedWingEvaluationsGrad.mat';
+not_save_geometry_file = true;
+
 global count xarr costarr
+addpath('DERIVESTsuite')
 count = 0;
 init;
 initMod = [1.2 1.2 1 1 1 1 1 1 1];
@@ -18,4 +23,4 @@ options = optimoptions(@fminunc, ...
     lower, upper);
 bestDesign = x(end,:);
  
-designAnalysis;
+%designAnalysis;

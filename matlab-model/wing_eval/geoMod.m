@@ -4,7 +4,12 @@ global newWing newRef
 file = fopen('avl_geometries/hale.avl','r');
 
 suf = num2str(count);
-fileID = fopen(strcat('avl_geometries/haleMod',suf,'.avl'),'w');
+runname = ['haleMod' suf];
+global not_save_geometry_file
+    if not_save_geometry_file
+        runname = 'haleMod';
+    end
+fileID = fopen(['avl_geometries/' runname '.avl'],'w');
 
 fileRex = '[a-zA-Z]+[0-9a-zA-Z]*\.dat';
 
