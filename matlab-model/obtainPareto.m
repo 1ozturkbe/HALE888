@@ -17,6 +17,7 @@ grid on
 sol = prtp([-LoD' W_wing'])
 LoDPareto = -sol(:,1);
 W_wingPareto = sol(:,2);
+MTOWPareto = W_wingPareto + 71.41*.454*9.81; 
 paretoWings = [];
 for i = 1:length(LoDPareto)
     [tf, index] = ismember(LoDPareto(i), LoD);
@@ -81,25 +82,25 @@ figure(2);
 hold on
 plot(W_wing(paretoWings),LoD(paretoWings),'ro');
 
-%% PSO of Pareto Wings to find optimal aoa
-global count
-count = 0;
-paretoWingsAOA = [];
-W_wingaoa = []; LoDaoa = [];
-for i = 1:length(paretoWings);
-    arr = wings(paretoWings(i)).arr;
-    [x, fval] = PSrun(arr,'aoa')
-    paretoWingsAOA(i,:) = x;
-end
-
-for i = 1:length(paretoWingsAOA)
-    [cost, extrainfo] = SAWingEval(paretoWingsAOA(i,:));
-    LoDaoa(i) = extrainfo.LoD;
-    W_wingaoa(i) = extrainfo.W_wing;
-end
-
-hold on
-plot(W_wingaoa,LoDaoa,'go');
+% %% PSO of Pareto Wings to find optimal aoa
+% global count
+% count = 0;
+% paretoWingsAOA = [];
+% W_wingaoa = []; LoDaoa = [];
+% for i = 1:length(paretoWings);
+%     arr = wings(paretoWings(i)).arr;
+%     [x, fval] = PSrun(arr,'aoa')
+%     paretoWingsAOA(i,:) = x;
+% end
+% 
+% for i = 1:length(paretoWingsAOA)
+%     [cost, extrainfo] = SAWingEval(paretoWingsAOA(i,:));
+%     LoDaoa(i) = extrainfo.LoD;
+%     W_wingaoa(i) = extrainfo.W_wing;
+% end
+% 
+% hold on
+% plot(W_wingaoa,LoDaoa,'go');
 
 %% 
 
