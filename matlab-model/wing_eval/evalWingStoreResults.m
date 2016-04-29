@@ -2,9 +2,10 @@ function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = ...
     evalWingStoreResults(arr, newInd)
 % vect = [1 1 0.5 0 0 0 0 0 0]
 global savedfilename
-if ~exist('savedfilename')
-    savedfilename = 'storedWingEvaluationsDOE.mat';
-end
+% if ~exist('savedfilename')
+%     savedfilename = 'storedWingEvaluationsDOE.mat';
+% end
+savedfilename = 'storedWingEvaluationsDOE.mat';
 [pathtothisfile,~,~] = fileparts(mfilename('fullpath'));
 savedfilepath = [pathtothisfile '\savedruns\' savedfilename];
 savedVariableName = 'savedEvaluations';

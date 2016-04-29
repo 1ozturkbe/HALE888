@@ -28,3 +28,4 @@ initWing = [0       0       0       1           0       0 0;
 addpath('avl_geometries');
 addpath('wing_eval')
 addpath('wing_eval\savedruns')
+addpath('DERIVESTsuite')
