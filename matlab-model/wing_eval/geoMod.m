@@ -9,7 +9,7 @@ global not_save_geometry_file
     if not_save_geometry_file
         runname = 'haleMod';
     end
-fileID = fopen(['avl_geometries/' runname '.avl'],'w');
+fileID = fopen(strcat('avl_geometries/',runname,'.avl'),'w');
 
 fileRex = '[a-zA-Z]+[0-9a-zA-Z]*\.dat';
 
