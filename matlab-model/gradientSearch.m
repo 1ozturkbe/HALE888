@@ -1,21 +1,24 @@
 global savedfilename not_save_geometry_file count
-savedfilename = 'storedWingEvaluationsGrad.mat';
+%savedfilename = 'gradPareto.mat';
 not_save_geometry_file = true;
 
-global count xarr costarr
-addpath('DERIVESTsuite')
+global costarr
 count = 0;
 init;
-initMod = [1.2 1.2 1 1 1 1 1 1 1];
-xarr = initMod;
+global scaling
+scaling = 1;
+%initMod = [1.0237 1.1158 0.1 0 0 0 0 0 0];
+xscaled = x;
+xscaled(2) = scaling*x(2);
+initMod = xscaled;
 costarr = [];
-lower = [0.8 0.8 0 -2 -2 -2 -2 -2 -2];
-upper = [1.2 1.2 1 2 2 2 2 2 2];
-diffminchange = [0.05 0.05 0.05 0.05 0.05 0.05 0.05 0.05 0.05];
+lower = [0.8 scaling*0.8 0 -2 -2 -2 -2 -2 -2];
+upper = [1.2 scaling*1.2 1 2 2 2 2 2 2];
+%diffminchange = [0.05 scaling*0.05 0.05 0.05 0.05 0.05 0.05 0.05 0.05];
 
+%'FiniteDifferenceStepSize', diffminchange,...
 options = optimoptions(@fminunc, ...
     'Display','iter-detailed',...
-    'FiniteDifferenceStepSize', diffminchange,...
     'FiniteDifferenceType', 'central',...
     'MaxFunctionEvaluations', 50);
 

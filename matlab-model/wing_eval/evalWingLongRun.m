@@ -4,8 +4,6 @@ function [L, LoD, W_wing, fuelVolume, delta_tip, extrainfo] = evalWingLongRun(ar
 % [L, LoD, W_wing, fuelVolume, delta_tip] = evalWing(vect)
 global rho V a
 global newWing newRef
-global xarr
-xarr = [xarr arr];
 disp(arr)
 [wingDescription, wingRef, cri] = geoDescription(arr);
 

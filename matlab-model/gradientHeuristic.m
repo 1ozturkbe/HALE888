@@ -1,6 +1,10 @@
-xguess = [0.9420 0.9444  0.3501 -1.0009 -1.0009...
-    -1.0009 -1.0009 -1.0009 -1.0009];
-xhuess = bestDesign;
+global savedfilename not_save_geometry_file count
+savedfilename = 'hessians.mat';
+not_save_geometry_file = true;
+count = 0;
+
+xguess = x
+% xhuess = bestDesign;
 dxmax = [0.2 0.2 0.4 2 2 2 2 2 2];
 
 xk = xguess;
@@ -35,7 +39,7 @@ for i = 1:length(xguess)
 %                 fevals{2} = [fevals{2} ineq1];
 %                 fevals{3} = [fevals{3} ineq2];
 %                 fevals{4} = [fevals{4} eq];
-                fevals{1} = [fevals{1} wingEvalGrad(xi, 1)];
+                fevals{1} = [fevals{1} wingEvalGrad(xi)];
         end
         xnews = [];
     
@@ -61,12 +65,12 @@ for i = 1:length(xguess)
                 temp(i) = xnews(1);
                 xi = temp;
                 %[out(1), out(2), out(3), out(4)] = wingEvalGrad(xi, 1);
-                out(1) = wingEvalGrad(xi, 1);
+                out(1) = wingEvalGrad(xi);
                 temp = xk;
                 temp(i) = xnews(2);
                 xi = temp;
                 %[out(1), out(2), out(3), out(4)] = wingEvalGrad(xi, 1);
-                out(1) = wingEvalGrad(xi, 1);
+                out(1) = wingEvalGrad(xi);
                 fevals{sol} = [out(sol) fevals{sol} out(sol)];
                 xevals{sol} = [xnews(1) xevals{sol} xnews(2)];
             end

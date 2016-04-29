@@ -1,0 +1,12 @@
+addpath('DERIVESTsuite');
+global savedfilename not_save_geometry_file count
+savedfilename = 'paretoGradient.mat';
+not_save_geometry_file = true;
+count = 0;
+%[G, gerr] = gradest(@wingEvalGrad, x);
+% [H, err] = hessdiag(@wingEvalGrad, x);
+
+dx = [0.00002 0.00002 0.00002 0.0001 0.0001 0.0001 0.0001 0.001 0.001];
+left = wingEvalGrad(x+dx);
+right = wingEvalGrad(x-dx);
+g = (right-left)./(2*dx);
