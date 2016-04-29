@@ -69,5 +69,26 @@ evalWing(bestDesign.arr,sol(1,4))
 geoMod(0) % To be able to check it out in AVL
 
 %% Calculating gradients of objectives for Pareto-optimal wings
-LoDgrad = []; W_winggrad = [];
+LoDgrad = []; W_winggrad = []; Lgrad =[]; fuelVolumegrad = []; delta0bgrad = [];
+for i = 1
+    ind = paretoWings(i)
+    arr = wings(ind).arr;
+    LoDInit = LoD(ind);
+    WInit = W_wing(ind);
+    LInit = wings(ind).L;
+    fuelVolumeInit = fuelVolume(ind);
+    delta0bInit = delta0b(ind);
+    step = [.02 .02 .02 .2 .2 .2 .2 .2 .2];
+    for j = 1:9
+        disp((i-1)*9+j)
+        dx = step(j);
+        arrdx = arr; arrdx(j) = arrdx(j) + dx;
+        [Ldx, LoDdx, W_wingdx, fuelVolumedx, delta_tipdx, extrainfo] = evalWing(arrdx,0);
+        LoDgrad(i,j) = (LoDdx - LoDInit)/dx;
+        W_winggrad(i,j) = (W_wingdx-WInit)/dx;
+        Lgrad(i,j) = (Ldx-LInit)/dx;
+        fuelVolumegrad(i,j) = (fuelVolumedx-fuelVolumeInit)/dx;
+        delta0bgrad(i,j) = (delta_tipdx/(arr(1)*initRef(3))-delta0bInit)/dx;
+    end
+end
 

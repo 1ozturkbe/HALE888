@@ -7,7 +7,7 @@ global delta0b_max fuelVolReq bi
 [Lift, LoD, W_wing, fuelVolume, delta_tip, extrainfo2] = evalWing(modArray, count);
 W_tot = 71.41*.454*9.81+W_wing; %N
 
-% Evaluating costs (constraints)
+% Evaluating costs (constraints)+
 liftCost = abs(W_tot-Lift);
 if Lift < W_tot
     liftCost = liftCost^2 + 1;
