@@ -2,7 +2,8 @@
 % This code takes in the optimal set of wings, and using the local
 % sensitivities to wing parameters of interest, calculates the best 
 % Pareto-optimal wing option
-
+global savefilename
+savedfilename = 'storedWingEvaluationsDOE.mat';
 % Sensitivities of interest
 gSens = 1.039;
 V_windSens = 0.3181; 

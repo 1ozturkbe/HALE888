@@ -1,12 +1,10 @@
 global savedfilename not_save_geometry_file count
-%savedfilename = 'gradPareto.mat';
+savedfilename = 'empty.mat';
 not_save_geometry_file = true;
-
 global costarr
 count = 0;
 init;
-global scaling
-scaling = 1;
+scaling = 100;
 %initMod = [1.0237 1.1158 0.1 0 0 0 0 0 0];
 xscaled = x;
 xscaled(2) = scaling*x(2);

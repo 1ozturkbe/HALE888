@@ -2,7 +2,7 @@ function [cost, extrainfo] = wingEvalGrad(arr)
 global initRef
 global count
 count = count + 1
-scaling = 1;
+scaling = 100;
 arr(2) = arr(2)/scaling;
 [Lift, LoD, W_wing, fuelVolume, delta_tip, extrainfo3] = evalWing(arr, count);
 b = arr(1)*initRef(3);
